@@ -12,28 +12,43 @@
 
 
 <body>
+
+    <!-- Audio -->
+    <audio id="menu-music" src="./Assets/Music/03 Title Screen.mp3"></audio>
+    <audio id="battle" src="./Assets/Music/28 Battle! (Gym Leader Battle).mp3"></audio>
+    <audio id="hall-of-fame" src="./Assets/Music/52 Hall of Fame.mp3"></audio>
+    <audio id="click" src="./Assets/Music/Pokemon (A Button).mp3"></audio>
     <header>
         <h1 class="quiz-title">Who's That Pokemon?</h1>
     </header>
 
     <section>
         <div class="card">
+            <div class="timer-div">
+                <h1 id="timer">0</h1>
+            </div>
             <div class="card-content">
-                <div class="quiz-content">
+                <button id="save" class="hide">Save Results</button>
+                <button id="leaderboard" class="hide">Leaderboard</button>
+                <div id="leaderboard-div" class="hide">
+                    <h3>Leaderboard:</h3>
+                </div>
+                <div id="quiz-content">
                     <button id="start-quiz">Start Challenge</button>
-                    <figure class="quiz-image">
-                        <img src="./Assets/Images/025.png" alt="Pikachu">
+                    <button id="next" class="hide">Next Question</button>
+                    <button id="end-game" class="hide">End Game</button>
+                    <figure id="quiz-image">
+                        <img src="./Assets/Images/025.png" alt="Image of Pokemon">
                     </figure>
+                    <h3 id="scoreboard">-/5</h3>
                     <div class="quiz-questions">
                         <div class="question">
-                            <h3>Who's that Pokemon?</h3>
+                            <h3 id="question">Who's that Pokemon?</h3>
                         </div>
-                        <ul class="choices">
-                            <li>Answer 1</li>
-                            <li>Answer 2</li>
-                            <li>Answer 3</li>
-                            <li>Answer 4</li>
+                        <ul id="quiz-list">
+                            <!-- Adding list here -->
                         </ul>
+                        
                     </div>
                 </div>
             </div>
