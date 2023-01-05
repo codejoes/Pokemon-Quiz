@@ -17,7 +17,8 @@ var timer = document.getElementById('timer');
 var pokmeonNames = ['bulbasaur', 'ivysaur', 'venasaur', 'charmander', 'charmeleon', 'charizard', 'squirtle', 'wartortle', 'blastoise', 'caterpie', 'metapod', 'butterfree', 'weedle', 'kakuna', 'beedrill', 'pidgey', 'pidgeotto', 'pidgeot', 'rattata', 'raticate', 'spearow', 'fearow', 'ekans', 'arbok', 'pikachu']
 var score = 0;
 
-
+//SAVED DATA
+const savedScores = [];
 
 // audio vars and functions
 var menuMusic = document.getElementById('menu-music');
@@ -70,7 +71,7 @@ playMenuMusic();
 
 function startGame() {
     //timer
-    timer.innerText = 5;
+    timer.innerText = 60;
     var myInterval = setInterval(function() {
         timer.innerText--;
         if (timer.innerText == 0) {
@@ -203,9 +204,6 @@ function nextQuestion() {
         nextButton.classList.add('hide');
         endGame.classList.remove('hide');
         endGame.addEventListener('click', endState);
-        // for (let i = 0; i < 4; i++) {
-        //     document.getElementById('quiz-list').removeChild(quizList.firstChild);
-        // }
     }
 }
 
@@ -219,7 +217,6 @@ function blurImage() {
 }
 
 function endState() {
-    //cardContent.removeChild(cardContent.firstChild);
     quizContent.classList.add('hide');
     saveBtn.classList.remove('hide');
     leaderboardBtn.classList.remove('hide');
@@ -232,11 +229,6 @@ function endState() {
     
     localStorage.setItem('name', initials);
     leaderboardBtn.addEventListener('click', showLeaderboard);
-    // var board = document.getElementById('leaderboard');
-    // var btn = document.createElement('button');
-    // btn.textContent = 'Save Score';
-    // board.appendChild(btn).setAttribute('id', 'save')
-    // var saveBtn = document.getElementById('save');
     saveBtn.addEventListener('click', saveData);
     
 
@@ -262,6 +254,7 @@ function saveData() {
     } else {bonus = 0;}
     score = score * multiplyer + bonus;
     let x = score.toString();
+    savedScores.push(x);
     localStorage.setItem("save", x);
     updateLeaderboard();
 }
